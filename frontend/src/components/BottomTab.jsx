@@ -7,7 +7,7 @@ import Profile from '../screens/Profile';
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTab() {
+export default function BottomTab({ setIsLoggedIn }) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -27,7 +27,7 @@ export default function BottomTab() {
       })}
     >
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Profile" children={() => <Profile setIsLoggedIn={setIsLoggedIn} />} />
     </Tab.Navigator>
   );
 }

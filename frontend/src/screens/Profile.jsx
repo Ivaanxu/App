@@ -1,8 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { globalStyles } from "../styles/global";
 
-export default function Profile() {
+export default function Profile({ setIsLoggedIn }) {
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
+  };
+
   return (
-    <View><Text>Perfil</Text></View>
+    <View><Text>Perfil</Text>
+      <TouchableOpacity style={globalStyles.button} onPress={handleLogout}>
+        <Text style={globalStyles.buttonText}>Cerrar sesión</Text>
+      </TouchableOpacity>
+    </View>
   );
 }

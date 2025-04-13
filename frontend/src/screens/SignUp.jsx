@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { globalStyles } from "../styles/global";
 
 export default function SignUp({ navigation, setIsLoggedIn }) {
@@ -34,6 +35,7 @@ export default function SignUp({ navigation, setIsLoggedIn }) {
         }, {}));
       } else {
         setErrors({});
+        await AsyncStorage.setItem('isLoggedIn', 'true');
         setIsLoggedIn(true);
       }
     } catch (error) {
