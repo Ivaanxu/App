@@ -25,7 +25,9 @@ export default function App() {
             <Stack.Screen name="SignIn" options={{ title: 'Iniciar sesión' }}>
               {(props) => <SignIn {...props} setIsLoggedIn={setIsLoggedIn} />}
             </Stack.Screen>
-            <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Registrarse' }} />
+            <Stack.Screen name="SignUp" options={{ title: 'Registrarse' }} >
+              {(props) => <SignUp {...props} setIsLoggedIn={setIsLoggedIn} />}
+            </Stack.Screen>
             <Stack.Screen name="Forget" component={Forget} />
             <Stack.Screen name="Home" component={BottomTab} options={{ headerShown: false }} />
           </Stack.Navigator>

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { globalStyles } from "../styles/global";
 
-export default function SignUp() {
-  const navigation = useNavigation();
+export default function SignUp({ navigation, setIsLoggedIn }) {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -36,6 +34,7 @@ export default function SignUp() {
         }, {}));
       } else {
         setErrors({});
+        setIsLoggedIn(true);
       }
     } catch (error) {
       console.error("Registration request failed:", error);
