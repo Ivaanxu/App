@@ -11,7 +11,7 @@ export default function SignIn({ navigation, setIsLoggedIn }) {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://192.168.0.22:3000/login', {
+      const response = await fetch('http://192.168.0.22:3000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

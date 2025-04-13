@@ -13,7 +13,7 @@ export default function SignUp({ navigation, setIsLoggedIn }) {
 
   const handleRegister = async () => {
     try {
-      const response = await fetch('http://192.168.0.22:3000/register', {
+      const response = await fetch('http://192.168.0.22:3000/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
