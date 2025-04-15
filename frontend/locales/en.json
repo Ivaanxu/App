@@ -1,0 +1,17 @@
+{
+    "welcome": "Welcome",
+    "signIn": "Sign In",
+    "login": "Login",
+    "logout": "Logout",
+    "signUp": "Sign Up",
+    "name": "Name",
+    "surname": "Surname",
+    "email": "Email",
+    "password": "Password",
+    "createAccount": "Create an account",
+    "forgotPassword": "Forgot your password?",
+    "hasAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "home": "Home",
+    "profile": "Profile"
+}

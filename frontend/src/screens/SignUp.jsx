@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 import { globalStyles } from "../styles/global";
 
 export default function SignUp({ navigation, setIsLoggedIn }) {
@@ -10,6 +11,7 @@ export default function SignUp({ navigation, setIsLoggedIn }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const { t } = useTranslation();
 
   const handleRegister = async () => {
     try {
@@ -45,13 +47,13 @@ export default function SignUp({ navigation, setIsLoggedIn }) {
 
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.title}>Crear cuenta</Text>
+      <Text style={globalStyles.title}>{t('createAccount')}</Text>
 
       <View style={globalStyles.inputContainer}>
         <Icon name="person-outline" size={25} style={globalStyles.icon} />
         <TextInput
           style={globalStyles.input}
-          placeholder="Nombre"
+          placeholder={t('name')}
           value={name}
           onChangeText={setName}
         />
@@ -62,7 +64,7 @@ export default function SignUp({ navigation, setIsLoggedIn }) {
         <Icon name="person-outline" size={25} style={globalStyles.icon} />
         <TextInput
           style={globalStyles.input}
-          placeholder="Apellidos"
+          placeholder={t('surname')}
           value={surname}
           onChangeText={setSurname}
         />
@@ -73,7 +75,7 @@ export default function SignUp({ navigation, setIsLoggedIn }) {
         <Icon name="mail-outline" size={25} style={globalStyles.icon} />
         <TextInput
           style={globalStyles.input}
-          placeholder="Email"
+          placeholder={t('email')}
           keyboardType="email-address"
           value={email}
           onChangeText={setEmail}
@@ -85,7 +87,7 @@ export default function SignUp({ navigation, setIsLoggedIn }) {
         <Icon name="lock-closed-outline" size={25} style={globalStyles.icon} />
         <TextInput
           style={globalStyles.input}
-          placeholder="Contraseña"
+          placeholder={t('password')}
           secureTextEntry
           value={password}
           onChangeText={setPassword}
@@ -94,11 +96,11 @@ export default function SignUp({ navigation, setIsLoggedIn }) {
       </View>
 
       <TouchableOpacity style={globalStyles.button} onPress={handleRegister}>
-        <Text style={globalStyles.buttonText}>Registrarse</Text>
+        <Text style={globalStyles.buttonText}>{t('signUp')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.replace('SignIn')}>
-        <Text style={styles.loginText}>¿Ya tienes cuenta? <Text style={globalStyles.link}>Iniciar sesión</Text></Text>
+        <Text style={styles.loginText}>{t('hasAccount')} <Text style={globalStyles.link}>{t('signIn')}</Text></Text>
       </TouchableOpacity>
     </View>
   );

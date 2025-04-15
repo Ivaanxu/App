@@ -1,6 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useTranslation } from "react-i18next";
 
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
@@ -8,6 +9,8 @@ import Profile from '../screens/Profile';
 const Tab = createBottomTabNavigator();
 
 export default function BottomTab({ setIsLoggedIn }) {
+  const { t } = useTranslation();
+  
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -26,8 +29,8 @@ export default function BottomTab({ setIsLoggedIn }) {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" children={() => <Profile setIsLoggedIn={setIsLoggedIn} />} />
+      <Tab.Screen name="Home" component={Home} options={{ title: t('home') }} />
+      <Tab.Screen name="Profile" children={() => <Profile setIsLoggedIn={setIsLoggedIn} />} options={{title: t('profile')}} />
     </Tab.Navigator>
   );
 }

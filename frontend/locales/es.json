@@ -1,0 +1,17 @@
+{
+    "welcome": "Bienvenid@",
+    "signIn": "Iniciar sesión",
+    "login": "Inciar sesión",
+    "logout": "Cerrar sesión",
+    "signUp": "Registrarse",
+    "name": "Nombre",
+    "surname": "Apellidos",
+    "email": "Email",
+    "password": "Contraseña",
+    "createAccount": "Crear una cuenta",
+    "forgotPassword": "¿Has olvidado tu contraseña?",
+    "hasAccount": "¿Ya tienes cuenta?",
+    "noAccount": "¿No tienes una cuenta?",
+    "home": "Inicio",
+    "profile": "Perfil"
+}

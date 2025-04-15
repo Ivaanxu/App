@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 import { globalStyles } from "../styles/global";
 
 export default function SignIn({ navigation, setIsLoggedIn }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const { t } = useTranslation();
 
   const handleLogin = async () => {
     try {
@@ -41,13 +43,13 @@ export default function SignIn({ navigation, setIsLoggedIn }) {
 
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.title}>Iniciar sesión</Text>
+      <Text style={globalStyles.title}>{t('welcome')}</Text>
 
       <View style={globalStyles.inputContainer}>
         <Icon name="mail-outline" size={25} style={globalStyles.icon} />
         <TextInput
           style={globalStyles.input}
-          placeholder="Email"
+          placeholder={t('email')}
           keyboardType="email-address"
           value={email}
           onChangeText={setEmail}
@@ -59,7 +61,7 @@ export default function SignIn({ navigation, setIsLoggedIn }) {
         <Icon name="lock-closed-outline" size={25} style={globalStyles.icon} />
         <TextInput
           style={globalStyles.input}
-          placeholder="Contraseña"
+          placeholder={t('password')}
           secureTextEntry
           value={password}
           onChangeText={setPassword}
@@ -68,17 +70,17 @@ export default function SignIn({ navigation, setIsLoggedIn }) {
       </View>
 
       <TouchableOpacity onPress={() => navigation.navigate('Forget')}>
-        <Text style={styles.forgotPassword}>¿Has olvidado tu contraseña?</Text>
+        <Text style={styles.forgotPassword}>{t('forgotPassword')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={globalStyles.button} onPress={handleLogin}>
-        <Text style={globalStyles.buttonText}>Iniciar sesión</Text>
+        <Text style={globalStyles.buttonText}>{t('login')}</Text>
       </TouchableOpacity>
 
       {errors.server && <Text style={globalStyles.errorText}>{errors.server}</Text>}
 
       <TouchableOpacity onPress={() => navigation.replace('SignUp')}>
-        <Text style={styles.signUp}>¿No tienes una cuenta? <Text style={globalStyles.link}>Registrate</Text></Text>
+        <Text style={styles.signUp}>{t('noAccount')} <Text style={globalStyles.link}>{t('signUp')}</Text></Text>
       </TouchableOpacity>
     </View>
   );

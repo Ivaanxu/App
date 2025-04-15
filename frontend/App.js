@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 import Welcome from './src/screens/Welcome';
 import SignIn from './src/screens/SignIn';
@@ -14,6 +15,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -33,10 +35,10 @@ export default function App() {
         ) : (
           <Stack.Navigator initialRouteName="Welcome">
             <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
-            <Stack.Screen name="SignIn" options={{ title: 'Iniciar sesión' }}>
+            <Stack.Screen name="SignIn" options={{ title: t('signIn') }}>
               {(props) => <SignIn {...props} setIsLoggedIn={setIsLoggedIn} />}
             </Stack.Screen>
-            <Stack.Screen name="SignUp" options={{ title: 'Registrarse' }} >
+            <Stack.Screen name="SignUp" options={{ title: t('signUp') }} >
               {(props) => <SignUp {...props} setIsLoggedIn={setIsLoggedIn} />}
             </Stack.Screen>
             <Stack.Screen name="Forget" component={Forget} />
